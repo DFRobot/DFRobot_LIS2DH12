@@ -20,21 +20,24 @@ DFRobot_LIS2DH12 LIS; //Accelerometer
 void setup(){
   Wire.begin();
   Serial.begin(115200);
-  LIS.init();
-  delay(100);
-}
-void loop(){
   while(!Serial);
-  Serial.println("Serial open");
+  delay(100);
+  while(LIS.init() == -1){  //Equipment connection exception or I2C address error
+    Serial.println("No I2C devices found");
+    delay(1000);
+  }
+}
+
+void loop(){
   acceleration();
 }
+
 /*!
  *  @brief Print the position result.
  */
 void acceleration(void)
 {
-  LIS.init();
-  int x, y, z;
+  int16_t x, y, z;
   while(true)
   {
     delay(100);
@@ -47,10 +50,5 @@ void acceleration(void)
     Serial.print(" mg \tz: ");
     Serial.print(z);
     Serial.println(" mg");
-    if(Serial.available())
-    {
-      Serial.read();
-      break;
-    }
   }
 }
