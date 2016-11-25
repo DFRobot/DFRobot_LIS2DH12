@@ -14,7 +14,7 @@
 #include <DFRobot_LIS2DH12.h>
 #include <Wire.h>
 
-uint8_t DFRobot_LIS2DH12::sensorAddress = 0x19; // 0x18 or 0x19
+uint8_t DFRobot_LIS2DH12::sensorAddress = 0x18; // 0x18 or 0x19
 
 int8_t DFRobot_LIS2DH12::init(void)
 {
