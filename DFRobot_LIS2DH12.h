@@ -18,10 +18,15 @@
 #include <stdlib.h>
 #include <stdint.h>
 
+#define LIS2DH12_RANGE_2GA	0x00
+#define LIS2DH12_RANGE_4GA	0x10
+#define LIS2DH12_RANGE_8GA	0x20
+#define LIS2DH12_RANGE_16GA	0x30
+
 class DFRobot_LIS2DH12 {
 public:
 	static uint8_t sensorAddress; ///< IIC address of the sensor
-	int8_t init(void); ///< Initialization function
+	int8_t init(uint8_t range); ///< Initialization function
 	void readXYZ(int16_t&, int16_t&, int16_t&); ///< read x, y, z data
 	void mgScale(int16_t&, int16_t&, int16_t&); ///< transform data to millig
   /*!
@@ -40,6 +45,14 @@ public:
    *  Through the I2C write multiple data on the specified register
    */
 	uint8_t writeReg(uint8_t, uint8_t *, size_t, bool autoIncrement = true);
-	};
+  
+private:  
+  /*!
+   *  Set measurement range
+   */
+	void setRange(uint8_t range);
 	
+	uint8_t mgPerDigit;
+	uint8_t  mgScaleVel;
+};	
 #endif
