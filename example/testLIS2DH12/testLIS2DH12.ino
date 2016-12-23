@@ -6,8 +6,14 @@
  * @copyright	[DFRobot](http://www.dfrobot.com), 2016
  * @copyright	GNU Lesser General Public License
  * @author [Wuxiao](xiao.wu@dfrobot.com)
+ *
  * @version  V1.0
  * @date  2016-10-13
+ *
+ * @version  V1.1
+ * @date  2016-12-23
+ * @change add the setting range function 
+ *
  * @https://github.com/DFRobot/DFRobot_LIS2DH12
  */
 
