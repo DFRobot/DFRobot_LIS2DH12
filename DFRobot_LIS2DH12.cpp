@@ -14,11 +14,10 @@
 #include <DFRobot_LIS2DH12.h>
 #include <Wire.h>
 
-uint8_t DFRobot_LIS2DH12::sensorAddress = 0x18; //	0x18
-
-int8_t DFRobot_LIS2DH12::init(uint8_t range)
+int8_t DFRobot_LIS2DH12::init(uint8_t range, uint8_t sensorAddress)
 {
     int8_t ret = 0;
+    this->sensorAddress = sensorAddress;
     
     setRange(range);
     Wire.beginTransmission(sensorAddress);
